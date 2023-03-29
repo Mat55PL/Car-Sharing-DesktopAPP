@@ -22,6 +22,13 @@ namespace Car_SharingDesktopAPP
         public UserPanel()
         {
             InitializeComponent();
+            DateText.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            DragMove();
         }
     }
 }

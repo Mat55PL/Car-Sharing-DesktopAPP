@@ -11,8 +11,71 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="UserPanel" Height="800" Width="800">
-    <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25" materialDesign:ElevationAssist.Elevation="Dp0">
-        <Label Content="UserPanel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" Margin="0,0,0,20" />
+        Title="UserPanel" Height="450" Width="800">
+    <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25" materialDesign:ElevationAssist.Elevation="Dp4">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:ColorZone Grid.Column="0" Height="650" CornerRadius="15 0 0 15" Background="White">
+                <StackPanel Margin="15">
+                    <WrapPanel Margin="0 10 5 30" HorizontalAlignment="Center">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/Images/Logo.png" Height="30" Width="30"/>
+                        <TextBlock Text="Sharex" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </WrapPanel>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Home</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="User" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Użytkownicy</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="Car" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Pojazdy</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15">
+                        <WrapPanel Width="127">
+                            <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Wypożyczenia</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 10" Cursor="Hand">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="Map" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Mapa</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 0">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Ustawienia</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            <StackPanel Margin="30 12 0 0" Grid.Column="1">
+                <DockPanel Margin="0 12 5 0">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Text="Strona Główna"/>
+                    <TextBlock x:Name="DateText" Text="01.01.1970" Foreground="SlateGray" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"
+                               HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0 0 20 0"/>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
     </materialDesign:Card>
 </Window>
