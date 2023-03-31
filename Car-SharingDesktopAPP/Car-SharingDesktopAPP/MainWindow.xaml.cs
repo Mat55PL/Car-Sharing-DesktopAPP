@@ -29,7 +29,7 @@ namespace Car_SharingDesktopAPP
 
         public bool IsDarkTheme { get; set; }
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
-        private void themeToggle_Click(object sender, RoutedEventArgs e)
+        private void ThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
@@ -56,7 +56,7 @@ namespace Car_SharingDesktopAPP
             DragMove();
         }
 
-        private void loginBtn_Click(object sender, RoutedEventArgs e)
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             if (textUsername.Text == "admin")
             {
