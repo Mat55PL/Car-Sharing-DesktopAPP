@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="UserPanel" Height="500" Width="1200">
+        Title="UserPanel" Height="500" Width="900">
     <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25" materialDesign:ElevationAssist.Elevation="Dp4">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -74,9 +74,9 @@
                     </Button>
                 </StackPanel>
             </materialDesign:ColorZone>
-            <StackPanel Margin="10,10,-250,10" Grid.Column="1">
-                <DockPanel Margin="0 12 5 0" Width="495" Height="355">
-                    <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden"/>
+            <StackPanel Margin="10,10,-350,10" Grid.Column="1">
+                <DockPanel Margin="0 12 5 0" Width="600" Height="418">
+                    <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Width="612" Height="415"/>
                 </DockPanel>
             </StackPanel>
         </Grid>

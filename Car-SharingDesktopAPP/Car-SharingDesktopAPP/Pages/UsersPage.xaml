@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Car_SharingDesktopAPP"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="UsersPage">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,14 +15,16 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Wyszukaj: "/>
             <TextBox x:Name="SearchBox" Width="200"/>
-            <Button Content="Szukaj"/>
+            <Button Content="Szukaj" Click="SearchButton_Click"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Adres e-mail" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Data urodzenia" Binding="{Binding BirthDate}"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding PhoneNumber}"/>
+                <DataGridCheckBoxColumn Header="Dokument" Binding="{Binding IsDocumentsVerified}"/>
+                <DataGridTextColumn Header="Uprawnienia" Binding="{Binding Rank}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

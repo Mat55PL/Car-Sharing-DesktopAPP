@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car_SharingDesktopAPP.Controllers
+namespace Car_SharingDesktopAPP.Models
 {
     public class User
     {
