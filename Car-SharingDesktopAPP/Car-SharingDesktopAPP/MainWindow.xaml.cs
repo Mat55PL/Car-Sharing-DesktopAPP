@@ -62,18 +62,43 @@ namespace Car_SharingDesktopAPP
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (textUsername.Text == "admin")
+            try
             {
-                Trace.WriteLine("Login successful");
-                MessageBox.Show("Login successful");
-                UserPanel userPanel = new UserPanel();
-                userPanel.Show();
-                this.Close();
+                con = new MySqlConnection(ConnectionString);
+                con.Open();
+                command = new MySqlCommand("Select * From users WHERE login = @Login", con);
+                command.Parameters.AddWithValue("@Login", textUsername.Text.ToString());
+                reader = command.ExecuteReader();
+                if(reader.Read())
+                {
+                    string password = reader["password"].ToString();
+                    if(password == textPassword.Password)
+                    {
+                        MessageBox.Show("Zalogowano pomyślnie!");
+                        UserPanel userPanel = new UserPanel();
+                        userPanel.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidłowe hasło!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nie znaleziono użytkownika o podanej nazwie!");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Trace.WriteLine("Login failed");
-                MessageBox.Show("Login failed");
+                MessageBox.Show("Wystąpił błąd " + ex.Message);
+            }
+            finally
+            {
+                if(con != null)
+                    con.Close();
+
+                reader.Close();
             }
         }
     }

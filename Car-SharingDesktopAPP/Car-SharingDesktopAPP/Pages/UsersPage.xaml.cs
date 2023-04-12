@@ -41,8 +41,8 @@ namespace Car_SharingDesktopAPP
             InitializeComponent();
             Users = new List<User>
             {
-                new User { Id = 1, FirstName = "Test", LastName = "Partyka", Email = "test@wp.pl", Password="Test", PhoneNumber = "789456123", IsDocumentsVerified = true, Rank = UserRank.Owner},
-                new User { Id = 2, FirstName = "Mateusz", LastName = "Partyka", Email = "test@gmail.pl", Password="test", PhoneNumber = "587987445", IsDocumentsVerified = false, Rank = UserRank.User}
+                new User { Id = 1, Login = "Test", FirstName = "Test", LastName = "Partyka", Email = "test@wp.pl", Password="Test", PhoneNumber = "789456123", IsDocumentsVerified = true, Rank = UserRank.Owner},
+                new User { Id = 2, Login = "MP", FirstName = "Mateusz", LastName = "Partyka", Email = "test@gmail.pl", Password="test", PhoneNumber = "587987445", IsDocumentsVerified = false, Rank = UserRank.User}
             };
             DataContext = this;
         }

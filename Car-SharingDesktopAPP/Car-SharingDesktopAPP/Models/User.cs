@@ -9,6 +9,7 @@ namespace Car_SharingDesktopAPP.Models
     public class User
     {
         public int Id { get; set; }
+        public string Login { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -18,9 +19,10 @@ namespace Car_SharingDesktopAPP.Models
         public UserRank Rank { get; set; }
 
 
-        public User(int id, string firstName, string lastName, string email, string password, string phoneNumber, bool isDocumentVerified,  UserRank rank)
+        public User(int id, string login, string firstName, string lastName, string email, string password, string phoneNumber, bool isDocumentVerified,  UserRank rank)
         {
             Id = id;
+            Login = login;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
