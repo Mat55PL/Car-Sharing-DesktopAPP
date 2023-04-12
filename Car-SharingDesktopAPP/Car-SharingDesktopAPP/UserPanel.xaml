@@ -65,8 +65,16 @@
                         </WrapPanel>
                     </Button>
                     <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
-                            materialDesign:ButtonAssist.CornerRadius="6" Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 0"
-                            Click="SettingsButton_Click">
+                            materialDesign:ButtonAssist.CornerRadius="6" Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15"
+                            Click="HomeButton_Click">
+                        <WrapPanel Width="120">
+                            <materialDesign:PackIcon Kind="FaceAgent" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                            <TextBlock>Zgłoszenia</TextBlock>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+                            materialDesign:ButtonAssist.CornerRadius="6" Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15"
+                            Click="SettingsButton_Click" Cursor="Hand">
                         <WrapPanel Width="120">
                             <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center" Margin="0 0 20 0"/>
                             <TextBlock>Ustawienia</TextBlock>
@@ -75,9 +83,7 @@
                 </StackPanel>
             </materialDesign:ColorZone>
             <StackPanel Margin="10,10,-350,10" Grid.Column="1">
-                <DockPanel Margin="0 12 5 0" Width="600" Height="418">
-                    <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Width="612" Height="415"/>
-                </DockPanel>
+                <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Height="430" />
             </StackPanel>
         </Grid>
     </materialDesign:Card>

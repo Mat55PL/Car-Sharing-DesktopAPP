@@ -14,12 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using System.Diagnostics;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Car_SharingDesktopAPP
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -29,6 +28,11 @@ namespace Car_SharingDesktopAPP
 
         public bool IsDarkTheme { get; set; }
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
+        //db connect var
+        private static string ConnectionString = (string)DBManager.GetConnectionString();
+        MySqlConnection con;
+        MySqlCommand command;
+        MySqlDataReader reader;
         private void ThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
