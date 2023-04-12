@@ -1,4 +1,4 @@
 {
-    "ConnectionString": "Server=myServerAddress;Database=myDataBase;User=myUsername;Password=myPassword;"
+  "ConnectionString": "server=127.0.0.1;uid=user;pwd=user;database=user"
 }
   
