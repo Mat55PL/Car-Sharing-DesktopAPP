@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Car_SharingDesktopAPP"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="700"
       Title="UsersPage">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,6 +16,10 @@
             <TextBlock Text="Wyszukaj: "/>
             <TextBox x:Name="SearchBox" Width="200"/>
             <Button Content="Szukaj" Click="SearchButton_Click"/>
+            <Control Width="10"/>
+            <Button Content="Dodaj użytkownika" Width="160" Click="AddUserButton_Click"/>
+            <Control Width="10"/>
+            <Button Content="Odśwież" Width="85" Click="RefreshUsersButton_Click"/>
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
@@ -25,6 +29,20 @@
                 <DataGridTextColumn Header="Telefon" Binding="{Binding PhoneNumber}"/>
                 <DataGridCheckBoxColumn Header="Dokument" Binding="{Binding IsDocumentsVerified}"/>
                 <DataGridTextColumn Header="Uprawnienia" Binding="{Binding Rank}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Usuń" Click="DeleteUserButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edytuj" Click="DeleteUserButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

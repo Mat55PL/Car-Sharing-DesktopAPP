@@ -1,0 +1,66 @@
+﻿<Page x:Class="Car_SharingDesktopAPP.Pages.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Car_SharingDesktopAPP.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      Background="{x:Null}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddUserPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="16">
+            <Button x:Name="BackButton" Content="Powrót" Margin="0 0 16 0" />
+            <TextBlock Text="Dodaj użytkownika" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,0,16,16">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <TextBox x:Name="LoginTextBox" Width="200" materialDesign:HintAssist.Hint="Login użytkownika" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <TextBox x:Name="FirstNameTextBox" Width="200" materialDesign:HintAssist.Hint="Imie" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                <TextBox x:Name="LastNameTextBox" Width="200" materialDesign:HintAssist.Hint="Nazwisko" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}" Margin="16 0 0 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <TextBox x:Name="EmailTextBox" Width="400" materialDesign:HintAssist.Hint="Adres Email" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <PasswordBox x:Name="PasswordTextBox" Width="200"  materialDesign:HintAssist.Hint="Hasło" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                <PasswordBox x:Name="RepeatPasswordTextBox" Width="200" Margin="16 0 0 0"  materialDesign:HintAssist.Hint="Powtórz Hasło" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <materialDesign:PackIcon Width="20" Height="20" Kind="Phone" Margin="10 15 8 0"/>
+                <TextBox x:Name="PhoneNumberTextBox" Width="200"
+                 materialDesign:HintAssist.Hint="Numer telefonu"
+                 materialDesign:HintAssist.IsFloating="True"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>   
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <CheckBox x:Name="DocumentsVerifiedCheckBox" Content="Czy dokument został zweryfikowane?" Margin="8 0 0 0"
+                  Style="{StaticResource MaterialDesignCheckBox}" />
+                <Control Width="30"/>
+                <ComboBox x:Name="RankComboBox" Width="200" Text="Ranga" SelectedIndex="0">
+                    <ComboBoxItem Content="Użytkownik"/>
+                    <ComboBoxItem Content="Support"/>
+                    <ComboBoxItem Content="Technik"/>
+                    <ComboBoxItem Content="Właściciel"/>
+                </ComboBox>
+                <Control Width="30"/>
+                <Button x:Name="SaveButton" Content="Zapisz" Width="100" HorizontalAlignment="Right" Click="SaveButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
