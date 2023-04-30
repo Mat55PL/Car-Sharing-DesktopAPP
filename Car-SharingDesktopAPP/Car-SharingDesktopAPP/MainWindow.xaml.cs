@@ -16,6 +16,7 @@ using MaterialDesignThemes.Wpf;
 using System.Diagnostics;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using Car_SharingDesktopAPP.Models;
 
 namespace Car_SharingDesktopAPP
 {
@@ -30,9 +31,6 @@ namespace Car_SharingDesktopAPP
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
         //db connect var
         private static string ConnectionString = (string)DBManager.GetConnectionString();
-        MySqlConnection con;
-        MySqlCommand command;
-        MySqlDataReader reader;
         private void ThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
@@ -62,17 +60,13 @@ namespace Car_SharingDesktopAPP
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            loginBtn.Content = "Trwa logowanie...";
             try
             {
-                con = new MySqlConnection(ConnectionString);
-                con.Open();
-                command = new MySqlCommand("Select * From users WHERE login = @Login", con);
-                command.Parameters.AddWithValue("@Login", textUsername.Text.ToString());
-                reader = command.ExecuteReader();
-                if(reader.Read())
+                using(var db = new UserDBContext())
                 {
-                    string password = reader["password"].ToString();
-                    if(password == textPassword.Password)
+                    var user = db.Users.SingleOrDefault(u => u.Login ==  textUsername.Text);
+                    if(user != null && user.Password == textPassword.Password)
                     {
                         MessageBox.Show("Zalogowano pomyślnie!");
                         UserPanel userPanel = new UserPanel();
@@ -81,24 +75,14 @@ namespace Car_SharingDesktopAPP
                     }
                     else
                     {
-                        MessageBox.Show("Nieprawidłowe hasło!");
+                        MessageBox.Show("Niepoprawny login lub hasło");
+                        loginBtn.Content = "Zaloguj";
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Nie znaleziono użytkownika o podanej nazwie!");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Wystąpił błąd " + ex.Message);
-            }
-            finally
-            {
-                if(con != null)
-                    con.Close();
-
-                reader.Close();
             }
         }
     }

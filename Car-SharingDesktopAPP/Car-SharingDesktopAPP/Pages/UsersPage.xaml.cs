@@ -1,6 +1,9 @@
 ﻿using Car_SharingDesktopAPP.Models;
+using Car_SharingDesktopAPP.Pages;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Printing;
@@ -25,41 +28,85 @@ namespace Car_SharingDesktopAPP
 
     public partial class UsersPage : Page
     {
-        private List<User> _users;
-        public List<User> Users
-        {
-            get { return _users; }
-            set
-            {
-                _users = value;
-                OnPropertyChanged(nameof(Users));
-            }
-        }
+        public ObservableCollection<User> Users { get; set; }
 
         public UsersPage()
         {
             InitializeComponent();
-            Users = new List<User>
+            using (var db = new UserDBContext())
             {
-                new User { Id = 1, Login = "Test", FirstName = "Test", LastName = "Partyka", Email = "test@wp.pl", Password="Test", PhoneNumber = "789456123", IsDocumentsVerified = true, Rank = UserRank.Owner},
-                new User { Id = 2, Login = "MP", FirstName = "Mateusz", LastName = "Partyka", Email = "test@gmail.pl", Password="test", PhoneNumber = "587987445", IsDocumentsVerified = false, Rank = UserRank.User}
-            };
+                Users = new ObservableCollection<User>(db.Users.ToList());
+            }
             DataContext = this;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            string searchText = SearchBox.Text.ToLower();
-            var filteredUsers = Users.Where(u => u.FirstName.ToLower().Contains(searchText)
-                                               || u.LastName.ToLower().Contains(searchText)
-                                               || u.Email.ToLower().Contains(searchText));
-            Users = filteredUsers.ToList();
+            using (var db = new UserDBContext())
+            {
+                if (!string.IsNullOrEmpty(SearchBox.Text))
+                {
+                    var filteredUsers = db.Users.Where(u => u.FirstName.ToLower().Contains(SearchBox.Text.ToLower()) || 
+                    u.LastName.ToLower().Contains(SearchBox.Text.ToLower()) || 
+                    u.Email.ToLower().Contains(SearchBox.Text.ToLower()) || 
+                    u.PhoneNumber.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
+                    Users = new ObservableCollection<User>(filteredUsers);
+                }
+                else
+                {
+                    Users = new ObservableCollection<User>(db.Users.ToList());
+                }
+                OnPropertyChanged("Users");
+            }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserPage addUserPage = new AddUserPage();
+            NavigationService.Navigate(addUserPage);
+        }
+
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                var user = button.DataContext as User;
+                if (user != null)
+                {
+                    MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Potwierdzenie usunięcia użytkownika", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        using (var db = new UserDBContext())
+                        {
+                            db.Users.Remove(user);
+                            db.SaveChanges();
+                        }
+                        Users.Remove(user);
+                    }
+                }
+            }
+        }
+
+        private void RefreshUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshUsersList();
+        }
+
+        public void RefreshUsersList()
+        {
+            using (var db = new UserDBContext())
+            {
+                Users = new ObservableCollection<User>(db.Users.ToList());
+            }
+            OnPropertyChanged("Users");
         }
     }
 }
