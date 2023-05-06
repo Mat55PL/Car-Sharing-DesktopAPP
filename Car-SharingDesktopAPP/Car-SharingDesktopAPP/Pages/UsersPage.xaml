@@ -21,7 +21,7 @@
             <Control Width="10"/>
             <Button Content="Odśwież" Width="85" Click="RefreshUsersButton_Click"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="UserDataGrid" Grid.Row="1" ItemsSource="{Binding Users}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}"/>

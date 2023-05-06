@@ -37,6 +37,7 @@ namespace Car_SharingDesktopAPP
             {
                 Users = new ObservableCollection<User>(db.Users.ToList());
             }
+            OnPropertyChanged("Users");
             DataContext = this;
         }
 
@@ -107,6 +108,7 @@ namespace Car_SharingDesktopAPP
                 Users = new ObservableCollection<User>(db.Users.ToList());
             }
             OnPropertyChanged("Users");
+            UserDataGrid.ItemsSource = Users;
         }
     }
 }

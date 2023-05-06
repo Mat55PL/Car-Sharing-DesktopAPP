@@ -64,7 +64,6 @@ namespace Car_SharingDesktopAPP.Pages
 
                 // Przełącz widok aplikacji z powrotem na poprzednią stronę
                 NavigationService.GoBack();
-
                 if(NavigationService.Content is UsersPage usersPage)
                 {
                     usersPage.RefreshUsersList();
