@@ -1,6 +1,7 @@
 ﻿using Car_SharingDesktopAPP.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,7 @@ namespace Car_SharingDesktopAPP.Pages
 
             try
             {
+                Validator.ValidateObject(newUser, new ValidationContext(newUser), true);
                 // Dodaj nowego użytkownika do bazy danych
                 using (var db = new UserDBContext())
                 {
@@ -69,10 +71,15 @@ namespace Car_SharingDesktopAPP.Pages
                     usersPage.RefreshUsersList();
                 }
             }
+            catch(ValidationException ve)
+            {
+                MessageBox.Show("Wystąpił błąd walidacji: " + ve.Message);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Wystąpił błąd podczas dodawania użytkownika: " + ex.Message);
             }
+
         }
     }
 }
