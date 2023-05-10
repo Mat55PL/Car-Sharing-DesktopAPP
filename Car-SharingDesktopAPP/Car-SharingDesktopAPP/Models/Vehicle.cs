@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace Car_SharingDesktopAPP.Models
 {
-    internal class Vehicle
+    public class Vehicle
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Marka pojazdu jest wymagana!")]
