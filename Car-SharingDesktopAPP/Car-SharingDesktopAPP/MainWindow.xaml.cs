@@ -31,7 +31,7 @@ namespace Car_SharingDesktopAPP
         private readonly PaletteHelper paletteHelper = new PaletteHelper();
         //db connect var
         private static string ConnectionString = (string)DBManager.GetConnectionString();
-        private void ThemeToggle_Click(object sender, RoutedEventArgs e)
+        public void ThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             ITheme theme = paletteHelper.GetTheme();
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
@@ -47,7 +47,7 @@ namespace Car_SharingDesktopAPP
             paletteHelper.SetTheme(theme);
         }
 
-        private void ExitApp(object sender, RoutedEventArgs e)
+        public void ExitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }

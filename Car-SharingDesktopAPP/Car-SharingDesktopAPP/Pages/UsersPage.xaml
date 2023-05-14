@@ -42,7 +42,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Click="DeleteUserButton_Click">
-                                <materialDesign:PackIcon Kind="AccountEdit" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                                <materialDesign:PackIcon Kind="AccountEdit" VerticalAlignment="Center" />
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
