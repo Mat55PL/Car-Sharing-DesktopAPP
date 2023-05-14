@@ -3,9 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Car_SharingDesktopAPP.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1200"
+      d:DesignHeight="450" d:DesignWidth="1150"
       Title="VehiclesPage">
 
     <Grid>
@@ -14,9 +15,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock Text="Wyszukaj: "/>
+            <TextBlock Text="Wyszukaj: " Height="18"/>
             <TextBox x:Name="SearchBox" Width="200"/>
             <Button Content="Szukaj"/>
+            <Control Width="10"/>
+            <Button Click="AddVehicleButton_Click" Content="Dodaj pojazd" Width="120"/>
+            <Control Width="10"/>
+            <Button Content="Odśwież" Width="85" Click="RefreshVehicleButton_Click"/>
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Vehicles}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
@@ -24,14 +29,28 @@
                 <DataGridTextColumn Header="Marka" Binding="{Binding Brand}"/>
                 <DataGridTextColumn Header="Model" Binding="{Binding Model}"/>
                 <DataGridTextColumn Header="Numer rejestracyjny" Binding="{Binding RegistrationNumber}"/>
-                <DataGridTextColumn Header="Rok produkcji" Binding="{Binding Year}"/>
-                <DataGridTextColumn Header="Kolor" Binding="{Binding Color}"/>
-                <DataGridTextColumn Header="Typ pojazdu" Binding="{Binding VehicleType}"/>
-                <DataGridTextColumn Header="Typ paliwa" Binding="{Binding FuelType}"/>
                 <DataGridTextColumn Header="Aktualne miasto" Binding="{Binding CurrentCity}"/>
                 <DataGridTextColumn Header="Stan czystości" Binding="{Binding CleanStatus}"/>
-                <DataGridTextColumn Header="Stan paliwa" Binding="{Binding FuelStatus}"/>
+                <DataGridTextColumn Header="Stan paliwa" Binding="{Binding FuelLevel}"/>
                 <DataGridCheckBoxColumn Header="Dostępność" Binding="{Binding IsAvailable}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DeleteVehicleButton_Click">
+                                <materialDesign:PackIcon Kind="TrashCan" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DeleteVehicleButton_Click">
+                                <materialDesign:PackIcon Kind="AccountEdit" VerticalAlignment="Center" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -29,7 +29,6 @@ namespace Car_SharingDesktopAPP.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Pobierz dane wprowadzone przez użytkownika
             string login = LoginTextBox.Text;
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
@@ -39,7 +38,6 @@ namespace Car_SharingDesktopAPP.Pages
             bool isDocumentsVerified = DocumentsVerifiedCheckBox.IsChecked ?? false;
             UserRank rank = (UserRank)RankComboBox.SelectedIndex;
 
-            // Utwórz nowego użytkownika na podstawie danych wprowadzonych przez użytkownika
             User newUser = new User
             {
                 Login = login,
@@ -55,7 +53,6 @@ namespace Car_SharingDesktopAPP.Pages
             try
             {
                 Validator.ValidateObject(newUser, new ValidationContext(newUser), true);
-                // Dodaj nowego użytkownika do bazy danych
                 using (var db = new UserDBContext())
                 {
                     db.Users.Add(newUser);
@@ -64,7 +61,6 @@ namespace Car_SharingDesktopAPP.Pages
 
                 MessageBox.Show("Użytkownik został dodany do bazy danych.");
 
-                // Przełącz widok aplikacji z powrotem na poprzednią stronę
                 NavigationService.GoBack();
                 if(NavigationService.Content is UsersPage usersPage)
                 {
