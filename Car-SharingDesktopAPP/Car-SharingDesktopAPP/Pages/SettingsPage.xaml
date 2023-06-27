@@ -13,7 +13,7 @@
         <StackPanel>
             <Control Height="50"/>
             <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock VerticalAlignment="Center" Text="DarkMode"/>
+                <TextBlock VerticalAlignment="Center" Text="DarkMode (Beta) "/>
                 <ToggleButton Cursor="Hand" ToolTip="Włącz tryb DarkMode" Margin="12 0 8 0" x:Name="themeToggle" IsChecked="{Binding IsDarkTheme}" Click="ThemeToggle_Click"/>
             </StackPanel>
             <Control Height="50"/>

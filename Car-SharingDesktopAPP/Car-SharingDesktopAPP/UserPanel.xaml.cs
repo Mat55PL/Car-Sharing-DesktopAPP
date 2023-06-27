@@ -26,6 +26,7 @@ namespace Car_SharingDesktopAPP
         private UsersPage? _usersPage;
         private MapPage? _mapPage;
         private RentalPage? _rentalPage;
+        private ReportsPage? _reportsPage;
         public UserPanel()
         {
             InitializeComponent();
@@ -96,6 +97,15 @@ namespace Car_SharingDesktopAPP
                 _rentalPage = new RentalPage();
             }
             PageFrame.Navigate(_rentalPage);
+        }
+
+        private void ReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(_reportsPage == null)
+            {
+                _reportsPage = new ReportsPage();
+            }
+            PageFrame.Navigate(_reportsPage);
         }
     }
 }

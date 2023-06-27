@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="190"/>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
-            <materialDesign:ColorZone Grid.Column="0" Height="450" CornerRadius="15 15 15 15" Background="White" VerticalAlignment="Center">
+            <materialDesign:ColorZone Grid.Column="0" Height="450" CornerRadius="15 15 15 15" Background="LightGray" VerticalAlignment="Center">
                 <StackPanel Margin="15">
                     <WrapPanel Margin="0 10 5 30" HorizontalAlignment="Center">
                         <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/Images/Logo.png" Height="30" Width="30"/>
@@ -66,7 +66,7 @@
                     </Button>
                     <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
                             materialDesign:ButtonAssist.CornerRadius="6" Width="auto" Height="35" materialDesign:RippleAssist.Feedback="White" Margin="0 0 0 15"
-                            Click="HomeButton_Click">
+                            Click="ReportsButton_Click">
                         <WrapPanel Width="120">
                             <materialDesign:PackIcon Kind="FaceAgent" VerticalAlignment="Center" Margin="0 0 20 0"/>
                             <TextBlock>Zgłoszenia</TextBlock>

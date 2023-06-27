@@ -23,7 +23,7 @@
             <Control Width="10"/>
             <Button Content="Odśwież" Width="85" Click="RefreshVehicleButton_Click"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Vehicles}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="VehicleDataGrid" Grid.Row="1" ItemsSource="{Binding Vehicles}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Marka" Binding="{Binding Brand}"/>

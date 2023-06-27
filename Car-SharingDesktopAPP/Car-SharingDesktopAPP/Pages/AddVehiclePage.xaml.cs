@@ -29,37 +29,36 @@ namespace Car_SharingDesktopAPP.Pages
 
         private void SaveVehButton_Click(object sender, RoutedEventArgs e)
         {
-            string brand = BrandTextBox.Text;
-            string model = ModelTextBox.Text;
-            string registrationNumber = RegistrationNumberTextBox.Text;
-            int year = int.Parse(YearVehTextBox.Text);
-            string color = ColorTextBox.Text;
-            VehicleType type = (VehicleType)VehTypeComboBox.SelectedIndex;
-            FuelType fuelType = (FuelType)VehPetrolComboBox.SelectedIndex;
-            AvailableCities cities = (AvailableCities)CurrentCityComboBox.SelectedIndex;
-            CleanStatus cleanStatus = (CleanStatus)CleanStatusComboBox.SelectedIndex;
-            int fuelLevel = int.Parse(FuelLevelTextBox.Text);
-            bool isAvailable = IsAvailableCheckBox.IsChecked ?? false;
-
-            Vehicle newVehicle = new Vehicle
-            {
-                Brand = brand,
-                Model = model,
-                RegistrationNumber = registrationNumber,
-                Year = year,
-                Color = color,
-                VehicleType = type,
-                FuelType = fuelType,
-                CurrentCity = cities,
-                CleanStatus = cleanStatus,
-                FuelLevel = fuelLevel,
-                IsAvailable = isAvailable
-            };
-
             try
             {
+                string brand = BrandTextBox.Text;
+                string model = ModelTextBox.Text;
+                string registrationNumber = RegistrationNumberTextBox.Text;
+                int year = Int32.Parse(YearVehTextBox.Text);
+                string color = ColorTextBox.Text;
+                VehicleType type = (VehicleType)VehTypeComboBox.SelectedIndex;
+                FuelType fuelType = (FuelType)VehPetrolComboBox.SelectedIndex;
+                AvailableCities cities = (AvailableCities)CurrentCityComboBox.SelectedIndex;
+                CleanStatus cleanStatus = (CleanStatus)CleanStatusComboBox.SelectedIndex;
+                int fuelLevel = Int32.Parse(FuelLevelTextBox.Text);
+                bool isAvailable = IsAvailableCheckBox.IsChecked ?? false;
+
+                Vehicle newVehicle = new Vehicle
+                {
+                    Brand = brand,
+                    Model = model,
+                    RegistrationNumber = registrationNumber,
+                    Year = year,
+                    Color = color,
+                    VehicleType = type,
+                    FuelType = fuelType,
+                    CurrentCity = cities,
+                    CleanStatus = cleanStatus,
+                    FuelLevel = fuelLevel,
+                    IsAvailable = isAvailable
+                };
                 Validator.ValidateObject(newVehicle, new ValidationContext(newVehicle), true);
-                using (var db = new VehicleDBContext())
+                using (var db = new CarSharingDBContext())
                 {
                     db.Vehicles.Add(newVehicle);
                     db.SaveChanges();

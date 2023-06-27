@@ -31,7 +31,7 @@
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                 <Control Width="10"/>
                 <TextBox x:Name="YearVehTextBox" Width="125" materialDesign:HintAssist.Hint="Rok produkcji" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="2023" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                 <Control Width="25"/>
@@ -70,7 +70,7 @@
                 </ComboBox>
                 <Control Width="10"/>
                 <TextBox x:Name="FuelLevelTextBox" Width="200" materialDesign:HintAssist.Hint="Stan paliwa" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="99"/>
             </StackPanel>
             <StackPanel Width="287" Height="72">
                 <Control Width="50"/>

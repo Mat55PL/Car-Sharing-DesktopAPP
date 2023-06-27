@@ -27,7 +27,7 @@ namespace Car_SharingDesktopAPP.Pages
         public VehiclesPage()
         {
             InitializeComponent();
-            using (var db = new VehicleDBContext())
+            using (var db = new CarSharingDBContext())
             {
                 Vehicles = new ObservableCollection<Vehicle>(db.Vehicles.ToList());
             }
@@ -53,7 +53,7 @@ namespace Car_SharingDesktopAPP.Pages
                     MessageBoxResult messageBoxResult = MessageBox.Show($"Czy na pewno chcesz usunąć pojazd [{vehicle.Id}] {vehicle.Brand} {vehicle.Model}?", "Potwierdzenie usunięcia pojazdu!", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if(messageBoxResult == MessageBoxResult.Yes)
                     {
-                        using (var db = new VehicleDBContext())
+                        using (var db = new CarSharingDBContext())
                         {
                             db.Vehicles.Remove(vehicle);
                             db.SaveChanges();                            
@@ -81,11 +81,12 @@ namespace Car_SharingDesktopAPP.Pages
 
         public void RefreshVehicles()
         {
-            using (var db = new VehicleDBContext())
+            using (var db = new CarSharingDBContext())
             {
                 Vehicles = new ObservableCollection<Vehicle>(db.Vehicles.ToList());
             }
             OnPropertyChanged("Vehicles");
+            VehicleDataGrid.ItemsSource = Vehicles;
         }
     }
 }

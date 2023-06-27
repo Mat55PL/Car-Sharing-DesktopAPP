@@ -63,7 +63,7 @@ namespace Car_SharingDesktopAPP
             loginBtn.Content = "Trwa logowanie...";
             try
             {
-                using(var db = new UserDBContext())
+                using(var db = new CarSharingDBContext())
                 {
                     var user = db.Users.SingleOrDefault(u => u.Login ==  textUsername.Text);
                     if(user != null && user.Password == textPassword.Password)

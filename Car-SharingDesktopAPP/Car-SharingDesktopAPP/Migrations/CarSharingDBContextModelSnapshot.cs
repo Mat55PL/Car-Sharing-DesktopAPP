@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Car_SharingDesktopAPP.Migrations.VehicleDB
+namespace Car_SharingDesktopAPP.Migrations
 {
-    [DbContext(typeof(VehicleDBContext))]
-    partial class VehicleDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CarSharingDBContext))]
+    partial class CarSharingDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,91 @@ namespace Car_SharingDesktopAPP.Migrations.VehicleDB
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Car_SharingDesktopAPP.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDocumentsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rank")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "adam.kowalski@example.com",
+                            FirstName = "Adam",
+                            IsDocumentsVerified = true,
+                            LastName = "Kowalski",
+                            Login = "adam",
+                            Password = "password123",
+                            PhoneNumber = "123456789",
+                            Rank = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "anna.nowak@example.com",
+                            FirstName = "Anna",
+                            IsDocumentsVerified = true,
+                            LastName = "Nowak",
+                            Login = "anna",
+                            Password = "password456",
+                            PhoneNumber = "987654321",
+                            Rank = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "partyka@example.com",
+                            FirstName = "Mateusz",
+                            IsDocumentsVerified = true,
+                            LastName = "Partyka",
+                            Login = "matt",
+                            Password = "testowe",
+                            PhoneNumber = "555444333",
+                            Rank = 99
+                        });
+                });
 
             modelBuilder.Entity("Car_SharingDesktopAPP.Models.Vehicle", b =>
                 {

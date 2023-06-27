@@ -33,7 +33,7 @@ namespace Car_SharingDesktopAPP
         public UsersPage()
         {
             InitializeComponent();
-            using (var db = new UserDBContext())
+            using (var db = new CarSharingDBContext())
             {
                 Users = new ObservableCollection<User>(db.Users.ToList());
             }
@@ -43,7 +43,7 @@ namespace Car_SharingDesktopAPP
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new UserDBContext())
+            using (var db = new CarSharingDBContext())
             {
                 if (!string.IsNullOrEmpty(SearchBox.Text))
                 {
@@ -85,7 +85,7 @@ namespace Car_SharingDesktopAPP
                     MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Potwierdzenie usunięcia użytkownika", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (result == MessageBoxResult.Yes)
                     {
-                        using (var db = new UserDBContext())
+                        using (var db = new CarSharingDBContext())
                         {
                             db.Users.Remove(user);
                             db.SaveChanges();
@@ -103,7 +103,7 @@ namespace Car_SharingDesktopAPP
 
         public void RefreshUsersList()
         {
-            using (var db = new UserDBContext())
+            using (var db = new CarSharingDBContext())
             {
                 Users = new ObservableCollection<User>(db.Users.ToList());
             }

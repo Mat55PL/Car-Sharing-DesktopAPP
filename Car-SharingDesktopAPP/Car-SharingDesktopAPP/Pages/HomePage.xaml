@@ -4,13 +4,59 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Car_SharingDesktopAPP.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Text="Strona Główna"/>
         <TextBlock x:Name="DateText" Text="01.01.1970" Foreground="SlateGray" FontSize="12" FontWeight="Bold" VerticalAlignment="Top"
-                               HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0 0 20 0"/>
+                               HorizontalAlignment="Right" Margin="0 0 20 0"/>
+
+        <materialDesign:Card Grid.Row="1" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:Card Padding="10" Margin="10" Background="LightBlue" Width="120" Height="80" ToolTip="Liczba użytkowników">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 5"/>
+                        <TextBlock x:Name="UserCountText" Text="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+                    </Grid>
+                </materialDesign:Card>
+                <Control Width="50"/>
+                <materialDesign:Card Padding="10" Margin="10" Background="LightSeaGreen" Width="120" Height="80" ToolTip="Liczba pojazdów">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon Kind="Car" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 5"/>
+                        <TextBlock x:Name="VehicleCountText" Text="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+                    </Grid>
+                </materialDesign:Card>
+                <Control Width="50"/>
+                <materialDesign:Card Padding="10" Margin="10" Background="LightYellow" Width="120" Height="80" ToolTip="Liczba pojazdów niedostępnych do wynajmu">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon Kind="CarClock" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 5"/>
+                        <TextBlock x:Name="UnavailableVehicleCountText" Text="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+                    </Grid>
+                </materialDesign:Card>
+            </StackPanel>
+        </materialDesign:Card>
     </Grid>
 </Page>

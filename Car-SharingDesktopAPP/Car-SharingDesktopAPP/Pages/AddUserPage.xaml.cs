@@ -53,7 +53,7 @@ namespace Car_SharingDesktopAPP.Pages
             try
             {
                 Validator.ValidateObject(newUser, new ValidationContext(newUser), true);
-                using (var db = new UserDBContext())
+                using (var db = new CarSharingDBContext())
                 {
                     db.Users.Add(newUser);
                     db.SaveChanges();

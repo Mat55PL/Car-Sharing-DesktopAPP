@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Car_SharingDesktopAPP.Migrations
 {
-    [DbContext(typeof(UserDBContext))]
-    [Migration("20230427100006_UserTest")]
-    partial class UserTest
+    [DbContext(typeof(CarSharingDBContext))]
+    [Migration("20230627213050_CarSharingMG")]
+    partial class CarSharingMG
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,22 +38,26 @@ namespace Car_SharingDesktopAPP.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsDocumentsVerified")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -102,6 +106,92 @@ namespace Car_SharingDesktopAPP.Migrations
                             Password = "testowe",
                             PhoneNumber = "555444333",
                             Rank = 99
+                        });
+                });
+
+            modelBuilder.Entity("Car_SharingDesktopAPP.Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("CleanStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("CurrentCity")
+                        .HasColumnType("int");
+
+                    b.Property<float>("FuelLevel")
+                        .HasColumnType("real");
+
+                    b.Property<int>("FuelType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("RegistrationNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("VehicleType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Skoda",
+                            CleanStatus = 0,
+                            Color = "Czarny",
+                            CurrentCity = 0,
+                            FuelLevel = 100f,
+                            FuelType = 1,
+                            IsAvailable = true,
+                            Model = "Fabia",
+                            RegistrationNumber = "RZ2345",
+                            VehicleType = 0,
+                            Year = 2015
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "Seat",
+                            CleanStatus = 2,
+                            Color = "Czerwony",
+                            CurrentCity = 0,
+                            FuelLevel = 100f,
+                            FuelType = 2,
+                            IsAvailable = true,
+                            Model = "Leon",
+                            RegistrationNumber = "RZ3456",
+                            VehicleType = 0,
+                            Year = 2018
                         });
                 });
 #pragma warning restore 612, 618
