@@ -74,6 +74,14 @@ namespace Car_SharingDesktopAPP.Pages
             NavigationService.Navigate(addVehiclePage);
         }
 
+        private void EditVehicleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var vehicle = button.DataContext as Vehicle;
+            AddVehiclePage addVehiclePage = new AddVehiclePage(vehicle);
+            NavigationService.Navigate(addVehiclePage);
+        }
+
         private void RefreshVehicleButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshVehicles();

@@ -22,13 +22,13 @@
             <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                 <Control Width="25"/>
                 <TextBox x:Name="BrandTextBox" Width="200" materialDesign:HintAssist.Hint="Marka Pojazdu" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding Brand}"/>
                 <Control Width="10"/>
                 <TextBox x:Name="ModelTextBox" Width="200" materialDesign:HintAssist.Hint="Model Pojazdu" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding Model}"/>
                 <Control Width="10"/>
                 <TextBox x:Name="RegistrationNumberTextBox" Width="200" materialDesign:HintAssist.Hint="Numer rejestracyjny" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding RegistrationNumber}"/>
                 <Control Width="10"/>
                 <TextBox x:Name="YearVehTextBox" Width="125" materialDesign:HintAssist.Hint="Rok produkcji" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="2023" />
@@ -36,7 +36,7 @@
             <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
                 <Control Width="25"/>
                 <TextBox x:Name="ColorTextBox" Width="200" materialDesign:HintAssist.Hint="Kolor pojazdu" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding Color}"/>
                 <Control Width="10"/>
                 <ComboBox x:Name="VehTypeComboBox" Width="200" materialDesign:HintAssist.Hint="Typ Pojazdu">
                     <ComboBoxItem Content="Samochód osobowy"/>
@@ -75,7 +75,7 @@
             <StackPanel Width="287" Height="72">
                 <Control Width="50"/>
                 <CheckBox x:Name="IsAvailableCheckBox" Content="Czy pojazd dostępny?"
-                  Style="{StaticResource MaterialDesignCheckBox}" Width="168" RenderTransformOrigin="0.233,0.543" Height="40" />
+                  Style="{StaticResource MaterialDesignCheckBox}" Width="168" RenderTransformOrigin="0.233,0.543" Height="40" IsChecked="{Binding IsAvailable}"/>
                 <Control Width="30"/>
                 <Button x:Name="SaveButton" Content="Zapisz" Width="100" Click="SaveVehButton_Click"/>
             </StackPanel>
