@@ -63,12 +63,10 @@ namespace Car_SharingDesktopAPP
 
         private void VehicleButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Width = 1400;
             if (_vehiclesPage == null)
             {
                 _vehiclesPage = new VehiclesPage();
             }
-            PageFrame.Width = 1200;
             PageFrame.Navigate(_vehiclesPage);
         }
 

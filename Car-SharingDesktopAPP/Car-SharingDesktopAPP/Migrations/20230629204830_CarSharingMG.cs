@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -12,6 +13,22 @@ namespace Car_SharingDesktopAPP.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Reports",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReportTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ReportDescription = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    ReportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReportStatus = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -56,6 +73,15 @@ namespace Car_SharingDesktopAPP.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Reports",
+                columns: new[] { "Id", "ReportDate", "ReportDescription", "ReportStatus", "ReportTitle" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 24, 22, 48, 30, 160, DateTimeKind.Local).AddTicks(7425), "Samochód nie odpala, czerwona kontrolka na desce rozdzielczej", 0, "Zepsuty samochód" },
+                    { 2, new DateTime(2023, 6, 19, 22, 48, 30, 160, DateTimeKind.Local).AddTicks(7459), "Radio nie działa, nie można włączyć radia", 1, "Uszkodzone radio" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "IsDocumentsVerified", "LastName", "Login", "Password", "PhoneNumber", "Rank" },
                 values: new object[,]
@@ -78,6 +104,9 @@ namespace Car_SharingDesktopAPP.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Reports");
+
             migrationBuilder.DropTable(
                 name: "Users");
 

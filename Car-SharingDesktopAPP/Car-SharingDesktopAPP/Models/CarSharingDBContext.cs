@@ -11,7 +11,7 @@ namespace Car_SharingDesktopAPP.Models
     {
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Report> Reports { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarSharingDB;Trusted_Connection=True;");
@@ -51,7 +51,28 @@ namespace Car_SharingDesktopAPP.Models
                     FuelLevel = 100
                 }
             );
+            
+            modelBuilder.Entity<Report>().ToTable("Reports");
 
+            modelBuilder.Entity<Report>().HasData(
+                new Report()
+                {
+                    Id = 1,
+                    ReportTitle = "Zepsuty samochód",
+                    ReportDescription = "Samochód nie odpala, czerwona kontrolka na desce rozdzielczej",
+                    ReportDate = DateTime.Now - TimeSpan.FromDays(5),
+                    ReportStatus = ReportStatus.New
+                },
+                new Report()
+                {
+                    Id = 2,
+                    ReportTitle = "Uszkodzone radio",
+                    ReportDescription = "Radio nie działa, nie można włączyć radia",
+                    ReportDate = DateTime.Now - TimeSpan.FromDays(10),
+                    ReportStatus = ReportStatus.InProgress
+                }
+            );
+            
             modelBuilder.Entity<User>().HasData(
                new User
                {

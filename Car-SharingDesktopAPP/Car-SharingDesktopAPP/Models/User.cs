@@ -11,13 +11,13 @@ namespace Car_SharingDesktopAPP.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Login użytkownika jest wymagany!")]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "Login nie może być dłuższy niż 50 znaków")]
         public string Login { get; set; }
         [Required(ErrorMessage = "Imię użytkownika jest wymagane!")]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "Imię nie może być dłuższe niż 50 znaków")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Nazwisko jest wymagane")]
-        [StringLength(75)]
+        [StringLength(75, ErrorMessage = "Nazwisko nie może być dłuższe niż 75 znaków")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Adres Email jest wymagany!")]
         [EmailAddress(ErrorMessage = "Podaj poprawny adres email!")]
@@ -33,8 +33,7 @@ namespace Car_SharingDesktopAPP.Models
         public string PhoneNumber { get; set; }
         public bool IsDocumentsVerified { get; set; }
         public UserRank Rank { get; set; }
-
-
+        
         public User(int id, string login, string firstName, string lastName, string email, string password, string phoneNumber, bool isDocumentVerified,  UserRank rank)
         {
             Id = id;
