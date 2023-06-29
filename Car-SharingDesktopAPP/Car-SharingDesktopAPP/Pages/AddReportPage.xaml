@@ -1,0 +1,53 @@
+﻿<Page x:Class="Car_SharingDesktopAPP.Pages.AddReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Car_SharingDesktopAPP.Pages"
+      mc:Ignorable="d"
+      Title="AddReportPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="16">
+            <Button Content="Wróc" x:Name="BackButton"></Button>
+            <Control Width="25"/>
+            <TextBlock Text="Dodawanie nowego raportu" FontSize="24" VerticalAlignment="Center" 
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0 0 0 16">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <Control Width="25"/>
+                <TextBox x:Name="ReportTitleBox" Width="200" materialDesign:HintAssist.Hint="Tytuł zgłoszenia" BorderThickness="2" 
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Text="{Binding ReportTitle}"/>
+                <Control Width="10"/>
+                <DatePicker x:Name="DateReportPicker" Width="200" FirstDayOfWeek="Monday" SelectedDate="2023-06-29" Height="40"
+                            Style="{StaticResource MaterialDesignDatePicker}" />
+                <Control Width="10"/>
+                <ComboBox x:Name="StatusComboBox" materialDesign:HintAssist.Hint="Status Zgłoszenia" Width="200" Height="40" Style="{StaticResource MaterialDesignComboBox}" 
+                          Foreground="{DynamicResource PrimaryHueMidBrush}" >
+                    <ComboBoxItem>Nowe</ComboBoxItem>
+                    <ComboBoxItem>W trakcie</ComboBoxItem>
+                    <ComboBoxItem>Zakończone</ComboBoxItem>
+                </ComboBox>
+                <Control Width="50"/>
+               
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 16">
+                <Control Width="25"/>
+                <TextBox x:Name="ReportDescriptionBox" Height="150" Width="650" materialDesign:HintAssist.Hint="Opis zgłoszenia" BorderThickness="2" 
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" TextWrapping="Wrap" Text="{Binding ReportDescription}" FontSize="20"/>
+            </StackPanel>
+            <StackPanel Width="287" Height="72">
+                <Control Width="50"/>
+                <Button x:Name="SaveButton" Content="Zapisz" Width="250" Click="SaveReportButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Page>

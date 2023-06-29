@@ -2,13 +2,54 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:Car_SharingDesktopAPP.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ReportsPage">
 
     <Grid>
-        <TextBlock Text="Reports Page" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Wyszukaj: " Height="18"/>
+            <TextBox x:Name="SearchBox" Width="200"/>
+            <Button Content="Szukaj"/>
+            <Control Width="10"/>
+            <Button Content="Dodaj zgłoszenie" Width="200" Click="AddReportButton_Click"/>
+            <Control Width="10"/>
+            <Button Content="Odśwież" Width="85" Click="RefreshButton_Click"/>
+            <Control Height="40"/>
+        </StackPanel>
+        <DataGrid x:Name="ReportDataGrid" Grid.Row="1" ItemsSource="{Binding Reports}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Tytuł zgłoszenia" Binding="{Binding ReportTitle}"/>
+                <DataGridTextColumn Header="Opis zgłoszenia" Binding="{Binding ReportDescription}"/>
+                <DataGridTextColumn Header="Data zgłoszenia" Binding="{Binding ReportDate}"/>
+                <DataGridTextColumn Header="Status zgłoszenia" Binding="{Binding ReportStatus}" CanUserSort="True"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DeleteReportButton_Click">
+                                <materialDesign:PackIcon Kind="TrashCan" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="EditReportButton_Click">
+                                <materialDesign:PackIcon Kind="AccountEdit" VerticalAlignment="Center"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
